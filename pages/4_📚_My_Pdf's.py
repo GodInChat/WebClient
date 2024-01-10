@@ -3,8 +3,6 @@ import streamlit as st
 st.set_page_config(page_title="InChat files", page_icon="📚")
 
 if 'access_token' in st.session_state:
-
-    message, status = '', ''
     uploaded_file = st.file_uploader("Upload PDF file", accept_multiple_files=False)
 
 
@@ -12,17 +10,13 @@ if 'access_token' in st.session_state:
     with col1:
         if st.button("Upload PDF"):
             if uploaded_file is None:
-                message, status = "Please choose Pdf!", 'error'
+                st.error("Please choose Pdf!")
             else:
-                message, status = "Pdf Uploaded Successfully!", 'success'
+                st.success("Pdf Uploaded Successfully!")
     with col2:
         if st.button("Delete PDF"):
             pass
 
-    if status == 'error':
-        st.error(message)
-    else:
-        st.success(message)
 
     genre = st.radio(
         "List of your pdfs:",

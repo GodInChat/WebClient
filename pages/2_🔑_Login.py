@@ -3,14 +3,14 @@ import requests
 from settings import settings as setting
 from api_routes import routes as route
 
-from functions import get_all_chats
+from functions import get_all_chats, get_all_pdfs
 
 base_url = setting.api_base_url
 login_route = base_url + route.login
 data = {
     "grant_type": "",
-    "username": "user@example.com",
-    "password": "string",
+    "username": "",
+    "password": "",
     "scope": "",
     "client_id": "",
     "client_secret": ""
@@ -34,7 +34,7 @@ with st.form("login_form"):
 if submit_button_login:
 
     if email_login and password_login:
-        data["email"] = email_login
+        data["username"] = email_login
         data["password"] = password_login
         response = requests.post(login_route, data=data, headers=headers)
         if response.status_code == 200:
@@ -43,7 +43,7 @@ if submit_button_login:
             st.session_state.access_token = response_json["access_token"]
             st.session_state.token_type = response_json["token_type"]
             st.session_state.chats = get_all_chats(response_json["access_token"])
-            st.session_state.my_pdfs = []
+            st.session_state.my_pdfs = get_all_pdfs(response_json["access_token"])
         else:
             st.error("login failed.")
     else:

@@ -6,6 +6,7 @@ st.set_page_config(
 )
 # init session state variables
 st.image('img/logo.png')
+st.snow()
 st.markdown(
     """
     Streamlit is an open-source app framework built specifically for

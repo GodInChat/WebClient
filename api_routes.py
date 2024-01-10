@@ -13,5 +13,6 @@ class Routes(BaseSettings):
     chat_init: str= '/chat/init'
     chat_get_all: str='/chat/get_all'
     chat_new_message: str='/chat/new_message'
+    chat_delete: str = '/chat/delete'
 
 routes = Routes()
