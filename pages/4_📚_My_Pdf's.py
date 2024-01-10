@@ -8,8 +8,12 @@ if 'access_token' in st.session_state:
         if uploaded_file:
             with st.spinner('Pdf is processing...'):
                 response = upload_file(st.session_state.access_token, uploaded_file)
-                st.session_state.my_pdfs.append(response.json())
-            st.success("Pdf Uploaded and processed Successfully!")
+                print(response.json())
+                if response.status_code == 201:
+                    st.session_state.my_pdfs.append(response.json())
+                    st.success("Pdf Uploaded and processed Successfully!")
+                else:
+                    st.error("Something is wrong. Please try again.")
         else:
             st.error("Please choose Pdf!")
 
