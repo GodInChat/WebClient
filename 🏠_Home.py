@@ -5,10 +5,6 @@ st.set_page_config(
     page_icon="👋",
 )
 # init session state variables
-st.session_state.access_token = None
-st.session_state.token_type = None
-st.session_state.chat_history = []
-st.session_state.my_pdfs = []
 
 st.markdown(
     """

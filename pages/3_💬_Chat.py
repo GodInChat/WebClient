@@ -27,9 +27,9 @@ chat  = next((item for item in st.session_state.chats if item['id'] == chat_opti
 prompt = st.chat_input("Say something")
 if prompt:
     pass
-
-for message in chat['messages']:
-    st.text(message['text'])
+if chat:
+    for message in chat['messages']:
+        st.text(message['text'])
 
 # st.header("Chat with AI")
 # user_message = st.text_input("Your message to AI")
