@@ -5,4 +5,4 @@
 1. install virtual environment with poetry
 2. run command 'poetry install'
 3. in settings.py edit base api route
-4. run command streamlit 'streamlit run 🏠_Home.py'
+4. run command 'streamlit run 🏠_Home.py'
