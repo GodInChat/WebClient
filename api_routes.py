@@ -15,4 +15,6 @@ class Routes(BaseSettings):
     chat_new_message: str='/chat/new_message'
     chat_delete: str = '/chat/delete'
 
+    chat_link: str = '/chat/link'
+
 routes = Routes()

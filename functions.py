@@ -14,6 +14,7 @@ delete_pdf_route = base_url + route.pdf_delete
 get_all_pdfs_route = base_url + route.pdf_get_all
 new_message_route = base_url + route.chat_new_message
 upload_file_route = base_url + route.pdf_upload
+chat_link_route = base_url + route.chat_link
 header = dict()
 
 
@@ -65,3 +66,12 @@ def upload_file(token, file):
     files = {'pdf_file': (file.name, file, 'application/pdf')}
     response = requests.post(upload_file_route, headers=header, files=files, data='')
     return response
+
+def chat_link(token, pdf_id, text):
+    url = 'https://api.inchat.pp.ua:4433/chat/link'
+    header['accept'] = 'application/json'
+    header['Authorization'] = 'Bearer ' + token
+    data = {'pdf_id': pdf_id,'text': text}
+    response = requests.post(chat_link_route, headers=header, json=data)
+    return response.json()
+
