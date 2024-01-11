@@ -63,5 +63,5 @@ def upload_file(token, file):
     header['Authorization'] = 'Bearer ' + token
     # header['Content-Type'] = 'multipart/form-data'
     files = {'pdf_file': (file.name, file, 'application/pdf')}
-    response = requests.post(upload_file_route, headers=header, files=files)
+    response = requests.post(upload_file_route, headers=header, files=files, data='')
     return response
